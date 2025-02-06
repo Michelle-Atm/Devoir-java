@@ -4,6 +4,7 @@ package com.michelle.project.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.michelle.project.enums.Role;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 import java.util.HashSet;
@@ -33,6 +34,7 @@ public class UserEntity {
     private String email;
 
     @Column(nullable = false, unique = true)
+    @Pattern(regexp = "\\+237[0-9]+", message = "Le numéro doit commencé par +237 et ne contenir que des chiffres")
     private String phone;
 
     @Enumerated(EnumType.STRING)
